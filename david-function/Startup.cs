@@ -21,7 +21,6 @@ namespace david_function
         {
             string cosmosDbConnectionString = Environment.GetEnvironmentVariable("CosmosDbConnectionString");
             string databaseName = Environment.GetEnvironmentVariable("CosmosDbDatabaseName");
-            string containerName = Environment.GetEnvironmentVariable("CosmosDbContainerName");
 
             CosmosClient cosmosClient = new CosmosClient(cosmosDbConnectionString);
             builder.Services.AddSingleton(cosmosClient);
