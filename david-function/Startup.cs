@@ -7,11 +7,28 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.DependencyInjection;
+using webapp.DAL.Repositories;
+using webapp.DAL.Models;
 
 namespace david_function
 {
-    public static class Function1
+    public class Startup : FunctionsStartup
     {
+        public override void Configure(IFunctionsHostBuilder builder)
+        {
+            string cosmosDbConnectionString = Environment.GetEnvironmentVariable("CosmosDbConnectionString");
+            string databaseName = Environment.GetEnvironmentVariable("CosmosDbDatabaseName");
+
+            CosmosClient cosmosClient = new CosmosClient(cosmosDbConnectionString);
+            builder.Services.AddSingleton(cosmosClient);
+            builder.Services.AddScoped<IBaseRepository<Lokasi>, BaseRepository<Lokasi>>(sp =>
+                new BaseRepository<Lokasi>(cosmosClient, databaseName));
+
+        }
+
         [FunctionName("FunctionTest")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
