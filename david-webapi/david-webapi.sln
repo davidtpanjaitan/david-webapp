@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapp.DAL", "..\webapp.DAL\webapp.DAL.csproj", "{9A303F0A-210A-4BEB-A019-21C265DDDB62}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "david-function", "..\david-function\david-function.csproj", "{FFEDAB08-CC67-4041-969B-4A49AF94A927}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapp.DAL", "..\webapp.DAL\webapp.DAL.csproj", "{9A303F0A-210A-4BEB-A019-21C265DDDB62}"
@@ -13,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A303F0A-210A-4BEB-A019-21C265DDDB62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A303F0A-210A-4BEB-A019-21C265DDDB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A303F0A-210A-4BEB-A019-21C265DDDB62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A303F0A-210A-4BEB-A019-21C265DDDB62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEDAB08-CC67-4041-969B-4A49AF94A927}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
