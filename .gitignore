@@ -262,3 +262,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/.vs/david-webapp/v17/.wsuo
+/.vs/VSWorkspaceState.json
