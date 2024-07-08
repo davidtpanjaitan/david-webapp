@@ -18,7 +18,7 @@ namespace david_function.LokasiCont
     public class LokasiController
     {
         private readonly IBaseRepository<Lokasi> lokasiRepo;
-        private const string routePrefix = "/lokasi";
+        private const string routePrefix = "lokasi";
 
         public LokasiController(IBaseRepository<Lokasi> lokasiRepo)
         {
