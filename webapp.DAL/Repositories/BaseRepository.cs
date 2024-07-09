@@ -12,7 +12,7 @@ namespace webapp.DAL.Repositories
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseModel
     {
         protected readonly Container _container;
-        protected const string partitionKey = "BasePartition";
+        protected const string partitionKey = "";
 
         public BaseRepository(CosmosClient client, string databaseName) {
             var containerName = typeof(T).Name;
@@ -24,11 +24,16 @@ namespace webapp.DAL.Repositories
             var response =  await _container.ReadItemAsync<T>(id, new PartitionKey(partitionKey));
             return response.Resource;
         }
-
-        public async Task<PagedResult<T>> GetAsync(int pageSize, int pageNumber)
+        public async Task<List<T>> GetAllAsync()
+        {
+            var query = _container.GetItemQueryIterator<T>("SELECT * FROM c");
+            var response = await query.ReadNextAsync();
+            return response.ToList();
+        }
+        public async Task<PagedResult<T>> GetAsyncPaged(int pageSize, int pageNumber)
         {
             var query = _container.GetItemQueryIterator<T>(
-                new QueryDefinition($"SELECT * FROM c ORDER BY c.createdTime DESC OFFSET {pageNumber*pageSize} LIMIT {pageSize}"),
+                new QueryDefinition($"SELECT * FROM c ORDER BY c.createdDate DESC OFFSET {pageNumber*pageSize} LIMIT {pageSize}"),
                 requestOptions: new QueryRequestOptions { MaxItemCount = pageSize, PartitionKey = new PartitionKey(partitionKey) }
             );
 
@@ -62,6 +67,7 @@ namespace webapp.DAL.Repositories
 
         public async Task<T> CreateAsync(T item)
         {
+            item.id = Guid.NewGuid().ToString();
             var response = await _container.CreateItemAsync(item, new PartitionKey(partitionKey));
             return response.Resource;
         }

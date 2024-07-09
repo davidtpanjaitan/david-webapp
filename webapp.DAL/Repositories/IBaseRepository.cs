@@ -11,7 +11,8 @@ namespace webapp.DAL.Repositories
     public interface IBaseRepository<T> where T : BaseModel
     {
         Task<T> GetByIdAsync(string id);
-        Task<PagedResult<T>> GetAsync(int pageSize, int pageNumber);
+        Task<List<T>> GetAllAsync();
+        Task<PagedResult<T>> GetAsyncPaged(int pageSize, int pageNumber);
         Task<T> CreateAsync(T item);
         Task<T> UpdateAsync(T item);
         Task<bool> DeleteAsync(string id);

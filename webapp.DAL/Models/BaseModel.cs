@@ -11,6 +11,7 @@ namespace webapp.DAL.Models
         public string id { get; set; }
         public DateTime createdDate { get; set; } = DateTime.Now;
         public string createdBy { get; set; }
+        public string BasePartition { get; set; } = "";
 
     }
 }

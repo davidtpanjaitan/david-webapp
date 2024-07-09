@@ -23,9 +23,11 @@ namespace david_function
             string databaseName = Environment.GetEnvironmentVariable("CosmosDbDatabaseName");
 
             CosmosClient cosmosClient = new CosmosClient(cosmosDbConnectionString);
+
             builder.Services.AddSingleton(cosmosClient);
-            builder.Services.AddScoped<IBaseRepository<Lokasi>, BaseRepository<Lokasi>>(sp =>
-                new BaseRepository<Lokasi>(cosmosClient, databaseName));
+
+            builder.Services.AddScoped(sp =>
+                new LokasiRepository(cosmosClient, databaseName));
 
         }
 
